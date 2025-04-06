@@ -76,6 +76,7 @@ function writeCSV(results) {
         console.error('Ошибка при записи файла:', error);
     }
 }
+
 // Главная логика
 (async () => {
     const config = JSON.parse(fs.readFileSync('./routes.json', 'utf8'));
@@ -84,7 +85,7 @@ function writeCSV(results) {
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
-    let allResults = [];
+    let allResults = [];  // Массив для всех результатов
 
     // Обрабатываем каждый маршрут
     for (const route of routes) {
@@ -93,7 +94,7 @@ function writeCSV(results) {
         console.log(`Переходим по URL: ${url}`);
 
         const flightData = await fetchFlightData(page, url);
-        allResults = [...allResults, ...flightData];
+        allResults = [...allResults, ...flightData]; // Добавляем данные в общий массив
 
         console.log(`Обработка маршрута ${route.from} → ${route.to} завершена.`);
     }
@@ -118,6 +119,6 @@ function writeCSV(results) {
 
     // Экспортируем результаты в CSV
     if (output === 'csv') {
-        writeCSV(top3); // Записываем только топ-3
+        writeCSV(allResults);  // Записываем все результаты, а не только топ-3
     }
 })();
