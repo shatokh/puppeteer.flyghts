@@ -1,0 +1,15 @@
+{
+  "tripLength": 14,
+  "month": "2025-05",
+  "output": "csv",
+  "routes": [
+    { "from": "WMI", "to": "BGY"},
+    { "from": "WMI", "to": "VIE" },
+    { "from": "WMI", "to": "CAG" },
+    { "from": "WMI", "to": "BUD" },
+    { "from": "WMI", "to": "PMO" },
+    { "from": "WMI", "to": "PMI" }
+  ],
+  "adults": 3,
+  "children": 1
+}
